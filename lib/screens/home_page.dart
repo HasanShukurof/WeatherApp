@@ -21,7 +21,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     _getWheatherdata();
-    print("object");
     super.initState();
   }
 
@@ -29,21 +28,27 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: ListView.builder(
-        itemCount: _weaters.length,
-        itemBuilder: (context, index) {
-          final WheatherModel hava = _weaters[index];
-          return Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.all(15),
-            child: Column(
-              children: [
-                Text(hava.tesviri ?? ""),
-              ],
-            ),
-          );
-        },
-      )),
+        child: ListView.builder(
+          itemCount: _weaters.length,
+          itemBuilder: (context, index) {
+            final hava = _weaters[index];
+            print("HAVA IKONKALARI: ${hava.ikona}");
+            return Container(
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              child: Column(
+                children: [
+                  Text(hava.status!),
+                ],
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }
